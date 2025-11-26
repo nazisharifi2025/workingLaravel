@@ -15,6 +15,7 @@ class ProductController extends Controller
     }
     public function ReadAll(){
         $pro = Product::all();
+        
         return $pro ;
     }
     public function filterRead(){
