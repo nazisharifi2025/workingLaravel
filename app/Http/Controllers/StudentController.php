@@ -13,4 +13,9 @@ class StudentController extends Controller
         // $allStudent= student::whereIn("id" , [15,4,3,6,9,12])->get();
         return $allStudent;
     }
+      public function read(){
+        $allst = student::where("score" , ">" , "30")->where(function($query){
+            $query->where("age" , ">" , 18)->orWhere("name" , "like" , "%a%");
+        })->get();
+    }
 }

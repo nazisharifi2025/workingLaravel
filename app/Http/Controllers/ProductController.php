@@ -37,5 +37,6 @@ class ProductController extends Controller
         $productUp->update();
         return ("date Updated");
     }
+  
 
 }

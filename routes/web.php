@@ -13,3 +13,4 @@ Route::get('if', [ProductController::class, 'if']);
 Route::get('finde', [ProductController::class, 'finde']);
 Route::get('updateData', [ProductController::class, 'update']);
 Route::get('fetchData' , [StudentController::class , 'fetchData']);
+Route::get('readData' , [StudentController::class , 'read']);
