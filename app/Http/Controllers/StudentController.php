@@ -52,7 +52,7 @@ class StudentController extends Controller
                 "id", "name", "lastName", "score", "age"
             ], 'LIKE', '%' . $request->search . '%');
         });
-    })->get();
+    })->paginate(10);
 
     return view("student", compact("st"));
 }

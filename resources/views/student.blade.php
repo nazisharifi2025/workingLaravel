@@ -43,6 +43,8 @@
              padding: 3px 4px;
         }
     </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <body>
     <div class="co">
@@ -52,11 +54,11 @@
         </form>
         <table>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Last Name</th>
-                <th>score</th>
-                <th>age</th>
+                <th class="py-2 px-4 border bg-gray-400">ID</th>
+                <th class="py-2 px-4 border bg-gray-400">Name</th>
+                <th class="py-2 px-4 border bg-gray-400">Last Name</th>
+                <th class="py-2 px-4 border bg-gray-400">score</th>
+                <th class="py-2 px-4 border bg-gray-400">age</th>
             </tr>
             @foreach($st as $student)
             <tr>
@@ -68,6 +70,7 @@
             </tr>
             @endforeach
         </table>
+       {{ $st->appends(request()->query())->links() }}
     </div>
 </body>
 </html>
