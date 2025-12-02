@@ -17,5 +17,53 @@ class StudentController extends Controller
         $allst = student::where("score" , ">" , "30")->where(function($query){
             $query->where("age" , ">" , 18)->orWhere("name" , "like" , "%a%");
         })->get();
+        return  $allst;
     }
+    public function Chield(){
+        $st = student::score()->where("age", "<", 12)->get();
+    return $st;
+    }
+    public function yong(){
+        $st = student::score()->where(function($query){
+            $query->where("age", ">", 12)->where("age", "<" , 20);
+        })->get();
+        return $st;
+    }
+    public function Old(){
+        $st = student::score()->where(function($query){
+            $query->where("age", ">", 20);
+        })->get();
+        return $st;
+    }
+    public function deleteStudent(){
+       $st = student::findorFail(3);
+       $st->delete();
+       return "student deleted";
+    }
+    public function restoreStudent(){
+       $st = student::withTrashed()->where("id" , 3)->restore();
+       return "student restored";
+    }
+  public function allStudent(Request $request)
+{
+    $st = Student::when($request->search, function ($query) use ($request) {
+        $query->where(function ($q) use ($request) {
+            $q->whereAny([
+                "id", "name", "lastName", "score", "age"
+            ], 'LIKE', '%' . $request->search . '%');
+        });
+    })->get();
+
+    return view("student", compact("st"));
+}
+
+    // public function allStudent(Request $request){
+        //  $st = student::withTrashed()->get();
+        // $st = student::when($request->search, function($query) use ($request)$query->where(function($q) use ($request)){
+        //     $q->whereAny([
+        //         "id", "name" , "lastName" , "score", "age" 
+        //     ],'LIKE','%'. $query->search . '%');
+        // })->get();
+        //  return view("student" , compact("st"));
+    // }
 }
