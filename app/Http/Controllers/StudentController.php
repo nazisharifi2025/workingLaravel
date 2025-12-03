@@ -66,4 +66,13 @@ class StudentController extends Controller
         // })->get();
         //  return view("student" , compact("st"));
     // }
+    public function insertStudent(Request $request){
+        $st = new student();
+        $st->name = $request->name;
+        $st->lastName = $request->lastName;
+        $st->score = $request->score;
+        $st->age = $request->age;
+        $st->save();
+        return redirect("insertStudent");
+    }
 }

@@ -20,3 +20,7 @@ Route::get('OldData' , [StudentController::class , 'Old']);
 Route::get('deleteStudent' , [StudentController::class , 'deleteStudent']);
 Route::get('restoreStudent' , [StudentController::class , 'restoreStudent']);
 Route::get('allStudent' , [StudentController::class , 'allStudent']);
+// Route::get('insertStudent' , function(){
+//     return view('add');
+// });
+Route::get('insertStudent' , [StudentController::class , 'insertStudent']);
