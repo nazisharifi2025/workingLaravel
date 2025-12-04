@@ -54,7 +54,7 @@ class StudentController extends Controller
         });
     })->paginate(10);
 
-    return view("student", compact("st"));
+    return view("student.student", compact("st"));
 }
 
     // public function allStudent(Request $request){
@@ -73,6 +73,6 @@ class StudentController extends Controller
         $st->score = $request->score;
         $st->age = $request->age;
         $st->save();
-        return redirect("insertStudent");
+        return redirect("student");
     }
 }

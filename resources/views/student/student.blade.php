@@ -47,18 +47,19 @@
 
 </head>
 <body>
-    <div class="co">
+    <div class="co p-6">
         <form action="{{ URL('allStudent') }}" method="get" >
             <input type="text" name="search" placeholder="Enter your name" id="search">
-            <button type="Submit">Search</button>
+            <button type="Submit" class="px-6 py-3 text-white font-bold bg-gray-400">Search</button>
         </form>
-        <table>
+        <table class="w-[95%] my-3 mx-auto">
             <tr>
                 <th class="py-2 px-4 border bg-gray-400">ID</th>
                 <th class="py-2 px-4 border bg-gray-400">Name</th>
                 <th class="py-2 px-4 border bg-gray-400">Last Name</th>
                 <th class="py-2 px-4 border bg-gray-400">score</th>
                 <th class="py-2 px-4 border bg-gray-400">age</th>
+                <th class="py-2 px-4 border bg-gray-400">Update</th>
             </tr>
             @foreach($st as $student)
             <tr>
@@ -67,6 +68,7 @@
                 <td>{{ $student->lastName }}</td>
                 <td>{{ $student->score }}</td>
                 <td>{{ $student->age }}</td>
+                <td><a href="{{ 'student/update'. $student->id }}">Update</a></td>
             </tr>
             @endforeach
         </table>

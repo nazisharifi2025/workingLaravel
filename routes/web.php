@@ -19,8 +19,14 @@ Route::get('yongData' , [StudentController::class , 'yong']);
 Route::get('OldData' , [StudentController::class , 'Old']);
 Route::get('deleteStudent' , [StudentController::class , 'deleteStudent']);
 Route::get('restoreStudent' , [StudentController::class , 'restoreStudent']);
-Route::get('allStudent' , [StudentController::class , 'allStudent']);
-// Route::get('insertStudent' , function(){
+// Route::match('allStudent' , [StudentController::class , 'allStudent']);
+// Route::post('add' , function(){
 //     return view('add');
-// });
-Route::get('insertStudent' , [StudentController::class , 'insertStudent']);
+// } );
+// Route::post('insertStudent' , [StudentController::class , 'insertStudent']);
+Route::prefix('student')->controller(StudentController::class)->group(function(){
+    Route::get('/', 'allStudent');
+    Route::view('add','Student.add');
+    Route::post('create', 'insertStudent');
+
+});

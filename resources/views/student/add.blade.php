@@ -15,7 +15,7 @@
             <h1 class="text-3xl font-bold text-gray-700">Insert Data</h1>
         </div>
 
-        <form action="{{ URL('insertStudent') }}" method="post" class="space-y-4">
+        <form action="{{ URL('student/create') }}" method="post" class="space-y-4">
             @csrf
 
             <div>
