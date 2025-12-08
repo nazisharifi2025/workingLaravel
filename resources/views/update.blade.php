@@ -15,29 +15,29 @@
             <h1 class="text-3xl font-bold text-gray-700">Update Data</h1>
         </div>
 
-        <form action="{{ URL('student/create') }}" method="post" class="space-y-4">
+        <form action="{{ URL('') }}" method="post" class="space-y-4">
             @csrf
 
             <div>
                 <label for="name" class="block font-semibold text-gray-600">Name:</label>
-                <input type="text" name="name" value="" id="name" required
+                <input type="text" name="name" value="{{ $st->name }}" id="name" required
                        class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
             </div>
 
             <div>
                 <label for="last_name" class="block font-semibold text-gray-600">Last Name:</label>
-                <input type="text" name="lastName" id="lastName" required
+                <input type="text" value="{{ $st->lastName }}" name="lastName" id="lastName" required
                        class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
             </div>
 
             <div>
                 <label for="score" class="block font-semibold text-gray-600">Score:</label>
-                <input type="number" name="score" id="score" required
+                <input type="number" name="score" value="{{ $st->score }}" id="score" required
                        class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
             </div>
             <div>
                 <label for="age" class="block font-semibold text-gray-600">Age:</label>
-                <input type="number" name="age" id="age" required
+                <input type="number" name="age" value="{{ $st->age }}" id="age" required
                        class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
             </div>
 

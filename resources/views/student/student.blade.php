@@ -68,7 +68,7 @@
                 <td>{{ $student->lastName }}</td>
                 <td>{{ $student->score }}</td>
                 <td>{{ $student->age }}</td>
-                <td><a href="{{ 'student/update'. $student->id }}">Update</a></td>
+                <td><a href="{{ URL('student/update').'/'. $student->id }}">Update</a></td>
             </tr>
             @endforeach
         </table>

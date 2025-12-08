@@ -75,4 +75,8 @@ class StudentController extends Controller
         $st->save();
         return redirect("student");
     }
+   public function update($id){
+        $st = student::findorFail($id);
+        return view("update" , compact("st"));
+    }
 }
