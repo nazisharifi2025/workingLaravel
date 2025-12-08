@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
+    <!-- <style>
         .{
             color: black;
             background-color: white;
@@ -25,11 +25,6 @@
             border: 2px solid black;
             border-radius: 5px;
         }
-        button{
-            padding: 10px 6px;
-            background-color: gray;
-            border-radius: 5px;
-        }
         table{
             border: 2px solid black;
             width: 100%;
@@ -40,15 +35,15 @@
         td{
              border: 2px solid black;
         }
-    </style>
+    </style> -->
   <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 <body>
-    <div class="co p-6">
-        <form action="{{ URL('allStudent') }}" method="get" >
-            <input type="text" name="search" placeholder="Enter your name" id="search">
-            <button type="Submit" class="px-6 py-3 text-white font-bold bg-gray-400">Search</button>
+    <div class=" p-6 w-full">
+        <form action="{{ URL('allStudent') }}" class="w-fit mx-auto flex p-12 border my-3  justify-center items-center" method="get" >
+            <input type="text" name="search" class="border py-2.5 border-r-0 px-6 mx-auto" placeholder="Enter your name" id="search">
+            <button type="Submit" class="px-6 py-2.5 text-white border border-l-0 font-bold bg-gray-400">Search</button>
         </form>
         <table class="w-[95%] my-3 mx-auto">
             <tr>
@@ -61,17 +56,17 @@
             </tr>
             @foreach($st as $student)
             <tr>
-                <td>{{ $student->id }}</td>
-                <td>{{ $student->name }}</td>
-                <td>{{ $student->lastName }}</td>
-                <td>{{ $student->score }}</td>
-                <td>{{ $student->age }}</td>
-                <td><a href="{{ URL('student/update').'/'. $student->id }}">Update</a></td>
-                <td>
+                <td class="border border-gray-400 p-1">{{ $student->id }}</td>
+                <td class="border border-gray-400 p-1">{{ $student->name }}</td>
+                <td class="border border-gray-400 p-1">{{ $student->lastName }}</td>
+                <td class="border border-gray-400 p-1">{{ $student->score }}</td>
+                <td class="border border-gray-400 p-1">{{ $student->age }}</td>
+                <td class="border border-gray-400 p-0 text-center"><a href="{{ URL('student/update').'/'. $student->id }} " class="bg-green-600 px-6 py-1 text-white mx-auto">Update</a></td>
+                <td class="border border-gray-400 p-1 text-center">
                     <form action="{{ URL('student/delete' , $student->id)  }}" onsubmit=" return confirm('Are Yoy sure you want to delete')" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Delete</button>
+                        <button class="bg-red-600 px-6 py-1 text-white mx-auto" type="submit">Delete</button>
                     </form>
                 </td>
             </tr>
