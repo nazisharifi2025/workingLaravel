@@ -29,4 +29,6 @@ Route::prefix('student')->controller(StudentController::class)->group(function()
     Route::view('add','Student.add');
     Route::post('create', 'insertStudent');
     Route::get('update/{id}', 'update');
+    Route::put('edit/{id}', 'editStudent');
+    Route::delete('delete/{id}' , 'destroy');
 });

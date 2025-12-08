@@ -36,11 +36,9 @@
         }
         th{
             background-color: gray;
-            padding: 6px 4px;
         }
         td{
              border: 2px solid black;
-             padding: 3px 4px;
         }
     </style>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -59,7 +57,7 @@
                 <th class="py-2 px-4 border bg-gray-400">Last Name</th>
                 <th class="py-2 px-4 border bg-gray-400">score</th>
                 <th class="py-2 px-4 border bg-gray-400">age</th>
-                <th class="py-2 px-4 border bg-gray-400">Update</th>
+                <th class="py-2 px-4 border bg-gray-400 " colspan="2">Delet or Update</th>
             </tr>
             @foreach($st as $student)
             <tr>
@@ -69,6 +67,13 @@
                 <td>{{ $student->score }}</td>
                 <td>{{ $student->age }}</td>
                 <td><a href="{{ URL('student/update').'/'. $student->id }}">Update</a></td>
+                <td>
+                    <form action="{{ URL('student/delete' , $student->id)  }}" onsubmit=" return confirm('Are Yoy sure you want to delete')" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </table>

@@ -15,9 +15,9 @@
             <h1 class="text-3xl font-bold text-gray-700">Update Data</h1>
         </div>
 
-        <form action="{{ URL('') }}" method="post" class="space-y-4">
+        <form action="{{ URL('student/edit' , $st->id ) }}" method="post" class="space-y-4">
             @csrf
-
+            @method('PUT')
             <div>
                 <label for="name" class="block font-semibold text-gray-600">Name:</label>
                 <input type="text" name="name" value="{{ $st->name }}" id="name" required

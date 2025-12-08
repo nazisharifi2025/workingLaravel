@@ -35,11 +35,11 @@ class StudentController extends Controller
         })->get();
         return $st;
     }
-    public function deleteStudent(){
-       $st = student::findorFail(3);
-       $st->delete();
-       return "student deleted";
-    }
+    // public function deleteStudent(){
+    //    $st = student::findorFail(3);
+    //    $st->delete();
+    //    return "student deleted";
+    // }
     public function restoreStudent(){
        $st = student::withTrashed()->where("id" , 3)->restore();
        return "student restored";
@@ -78,5 +78,18 @@ class StudentController extends Controller
    public function update($id){
         $st = student::findorFail($id);
         return view("update" , compact("st"));
+    }
+    public function editStudent(Request $request , $id){
+       $student =  student::findOrFail($id);
+       $student->name = $request->name ;
+       $student->lastName = $request->lastName ;
+       $student->score = $request->score;
+       $student->age = $request->age;
+       $student->update();
+       return redirect('student');
+    }
+    public function destroy(Request $request , $id){
+        student::findOrFail($id)->delete();
+        return redirect('student');
     }
 }
