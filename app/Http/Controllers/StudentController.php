@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\addRequest;
 use Illuminate\Http\Request;
 use App\Models\student;
 class StudentController extends Controller
@@ -66,12 +66,18 @@ class StudentController extends Controller
         // })->get();
         //  return view("student" , compact("st"));
     // }
-    public function insertStudent(Request $request){
+    public function insertStudent(addRequest $request){
+        $imgPath = null;
+        if($request->hasFile('image')){
+            $imgPath = $request->file('image')->store('photos', 'public');
+        }
+        // valedation
         $st = new student();
         $st->name = $request->name;
         $st->lastName = $request->lastName;
         $st->score = $request->score;
         $st->age = $request->age;
+        $st->image = $imgPath;
         $st->save();
         return redirect("student");
     }

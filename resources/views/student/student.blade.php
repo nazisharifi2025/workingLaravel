@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <style>
+    <style>
         .{
             color: black;
             background-color: white;
@@ -35,7 +35,7 @@
         td{
              border: 2px solid black;
         }
-    </style> -->
+    </style>
   <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
