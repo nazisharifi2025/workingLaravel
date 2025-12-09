@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\addRequest;
+use Illuminate\storage\photo;
 use Illuminate\Http\Request;
 use App\Models\student;
 class StudentController extends Controller
@@ -95,7 +96,11 @@ class StudentController extends Controller
        return redirect('student');
     }
     public function destroy(Request $request , $id){
-        student::findOrFail($id)->delete();
+       $student = student::findOrFail($id);
+       if($student->image){
+        Storage::disk($student->image)->delete();
+       }
+       $student->delete();
         return redirect('student');
     }
 }
