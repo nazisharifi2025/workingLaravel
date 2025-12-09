@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
+    <!-- <style>
         .{
             color: black;
             background-color: white;
@@ -35,7 +35,7 @@
         td{
              border: 2px solid black;
         }
-    </style>
+    </style> -->
   <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
@@ -52,6 +52,7 @@
                 <th class="py-2 px-4 border bg-gray-400">Last Name</th>
                 <th class="py-2 px-4 border bg-gray-400">score</th>
                 <th class="py-2 px-4 border bg-gray-400">age</th>
+                <th class="py-2 px-4 border bg-gray-400">Image</th>
                 <th class="py-2 px-4 border bg-gray-400 " colspan="2">Delet or Update</th>
             </tr>
             @foreach($st as $student)
@@ -61,6 +62,11 @@
                 <td class="border border-gray-400 p-1">{{ $student->lastName }}</td>
                 <td class="border border-gray-400 p-1">{{ $student->score }}</td>
                 <td class="border border-gray-400 p-1">{{ $student->age }}</td>
+                <td class="border border-gray-400 p-1">
+                    @if($student->image)
+                    <img src="{{ 'storage/' . $student->image }}" alt="image" class="h-20 w-[80%] mx-auto">
+                    @endif
+                </td>
                 <td class="border border-gray-400 p-0 text-center"><a href="{{ URL('student/update').'/'. $student->id }} " class="bg-green-600 px-6 py-1 text-white mx-auto">Update</a></td>
                 <td class="border border-gray-400 p-1 text-center">
                     <form action="{{ URL('student/delete' , $student->id)  }}" onsubmit=" return confirm('Are Yoy sure you want to delete')" method="post">
