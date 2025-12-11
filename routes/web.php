@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\FilesController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -31,4 +32,9 @@ Route::prefix('student')->controller(StudentController::class)->group(function()
     Route::get('update/{id}', 'update');
     Route::put('edit/{id}', 'editStudent');
     Route::delete('delete/{id}' , 'destroy');
+});
+Route::prefix('songs')->controller(FilesController::class)->group(function(){
+    Route::view('add', 'file.insert');
+    Route::post('create' , "create");
+    Route::get('/' , 'read');
 });
